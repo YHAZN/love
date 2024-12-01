@@ -1,30 +1,25 @@
 let currentSlide = 0;
 
+function prevSlide() {
+    const slides = document.querySelectorAll('.carousel-images img');
+    const totalSlides = slides.length;
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+    const slides = document.querySelectorAll('.carousel-images img');
+    const totalSlides = slides.length;
+    currentSlide = (currentSlide + 1) % totalSlides;
+    document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
 function openCard() {
-    const card = document.querySelector('.card');
-    card.classList.add('open');
+    // Hide the carousel cover and show the card
+    document.querySelector('.carousel-cover').classList.add('hidden');
+    document.querySelector('.card-container').classList.remove('hidden');
 }
 
 function sendLove() {
     alert('Love sent with all my heart! ❤️');
 }
-
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-images img');
-    const totalSlides = slides.length;
-    currentSlide = (index + totalSlides) % totalSlides; // Ensure looping
-    document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
-
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
-
-// Automatically transition slides every 3 seconds
-setInterval(() => {
-    nextSlide();
-}, 3000);
