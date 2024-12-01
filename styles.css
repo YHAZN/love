@@ -13,8 +13,8 @@ body {
 }
 
 .card {
-    width: 350px;
-    height: 250px;
+    width: 300px;
+    height: 450px; /* Increased height */
     transform-style: preserve-3d;
     transition: transform 0.8s;
     cursor: pointer;
@@ -35,6 +35,8 @@ body {
     background: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
+    padding: 20px; /* Added padding to ensure content stays inside */
+    overflow: hidden; /* Prevent text overflow */
 }
 
 .card .front {
@@ -70,7 +72,8 @@ body {
 
 .message p {
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 16px; /* Adjusted for better fit */
+    word-wrap: break-word; /* Ensure text doesn't overflow */
 }
 
 button {
@@ -94,7 +97,7 @@ button:hover {
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 300px;
+    max-width: 260px; /* Slightly narrower for better fit */
     margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
