@@ -16,74 +16,62 @@
         <div class="heart"></div>
     </div>
 
-    <!-- Card Container -->
-    <div class="container">
-        <div class="card" onclick="openCard()">
-            <div class="front">
-                <h1 class="title">💕 To My Love 💕</h1>
-                <p class="subtitle">Click to open</p>
-            </div>
-            <div class="back">
-                <div class="carousel">
-                    <div class="carousel-images">
-                        <img src="images/image1.jpeg" alt="Memory 1">
-                        <img src="images/image2.jpeg" alt="Memory 2">
-                        <img src="images/image3.jpeg" alt="Memory 3">
-                    </div>
-                    <button class="prev" onclick="prevSlide()">❮</button>
-                    <button class="next" onclick="nextSlide()">❯</button>
+    <!-- Flip-Open Card -->
+    <div class="book-container">
+        <!-- Left Rectangle (Images Carousel) -->
+        <div class="left-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="images/image1.jpeg" alt="Memory 1">
+                    <img src="images/image2.jpeg" alt="Memory 2">
+                    <img src="images/image3.jpeg" alt="Memory 3">
                 </div>
-                <div class="message">
-                    <p>Dear Helen,</p>
-                    <p>
-                        I’ve spent so much time reflecting on my mistakes and the pain I’ve caused you. I realize now how much your love means to me, and I’m truly sorry for not showing you the care and respect you deserve.
-                    </p>
-                    <p>
-                        You are the light in my life, the one who inspires me to be better. I want to be the partner you can count on, someone who cherishes and values you every single day.
-                    </p>
-                    <p>
-                        Please let me show you how much you mean to me. I love you with all my heart, and I’ll do everything I can to make things right. ❤️
-                    </p>
-                    <p>
-                        Will you give us another chance?
-                    </p>
-                </div>
-                <button onclick="sendLove()">💌 Send Love 💌</button>
+                <button class="prev" onclick="prevSlide()">❮</button>
+                <button class="next" onclick="nextSlide()">❯</button>
             </div>
+        </div>
+
+        <!-- Right Rectangle (Message Card) -->
+        <div class="right-card">
+            <div class="message">
+                <p>Dear Helen,</p>
+                <p>
+                    I’ve spent so much time reflecting on my mistakes and the pain I’ve caused you. I realize now how much your love means to me, and I’m truly sorry for not showing you the care and respect you deserve.
+                </p>
+                <p>
+                    You are the light in my life, the one who inspires me to be better. I want to be the partner you can count on, someone who cherishes and values you every single day.
+                </p>
+                <p>
+                    Please let me show you how much you mean to me. I love you with all my heart, and I’ll do everything I can to make things right. ❤️
+                </p>
+                <p>
+                    Will you give us another chance?
+                </p>
+            </div>
+            <button onclick="sendLove()">💌 Send Love 💌</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 0;
 
-        function openCard() {
-            const card = document.querySelector('.card');
-            card.classList.add('open');
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const totalSlides = slides.length;
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const totalSlides = slides.length;
+            currentSlide = (currentSlide + 1) % totalSlides;
+            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
         function sendLove() {
             alert('Love sent with all my heart! ❤️');
         }
-
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.carousel-images img');
-            const totalSlides = slides.length;
-            currentSlide = (index + totalSlides) % totalSlides; // Ensure looping
-            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        // Automatically transition slides every 3 seconds
-        setInterval(() => {
-            nextSlide();
-        }, 3000);
     </script>
 </body>
 </html>
