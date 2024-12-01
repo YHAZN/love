@@ -13,8 +13,8 @@ body {
 }
 
 .card {
-    width: 500px;
-    height: 400px; /* Adjusted dimensions for better fit */
+    width: 400px;
+    height: 600px; /* Taller to fit carousel and message */
     transform-style: preserve-3d;
     transition: transform 0.8s;
     cursor: pointer;
@@ -28,7 +28,7 @@ body {
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border: 2px solid #ff99ac;
     border-radius: 15px;
@@ -36,7 +36,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 20px;
-    overflow: hidden;
 }
 
 .card .front {
@@ -59,16 +58,11 @@ body {
     transform: rotateY(180deg);
 }
 
-.content {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-}
-
 .carousel {
-    flex: 1;
+    width: 100%;
+    height: 200px; /* Reserved height for carousel */
     position: relative;
-    margin-right: 10px;
+    margin-bottom: 20px; /* Spacing below carousel */
     overflow: hidden;
     border-radius: 10px;
 }
@@ -76,13 +70,13 @@ body {
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    height: 100%;
 }
 
 .carousel-images img {
     width: 100%;
-    flex-shrink: 0;
-    object-fit: cover;
     height: 100%;
+    object-fit: cover;
 }
 
 button.prev, button.next {
@@ -111,13 +105,16 @@ button.prev:hover, button.next:hover {
 }
 
 .message {
-    flex: 2;
+    flex-grow: 1;
     padding: 10px;
-    overflow-y: auto; /* Ensures text scrolls if it exceeds the space */
+    overflow-y: auto; /* Allow scrolling for longer messages */
     word-wrap: break-word;
     font-size: 16px;
     color: white;
     text-align: left;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 button {
