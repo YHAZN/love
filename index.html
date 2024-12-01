@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Floating Hearts -->
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <!-- Card Container -->
     <div class="container">
         <div class="card" onclick="openCard()">
             <div class="front">
@@ -24,7 +34,7 @@
                     <button class="next" onclick="nextSlide()">❯</button>
                 </div>
                 <div class="message">
-                    <p>Dear [Her Name],</p>
+                    <p>Dear Helen,</p>
                     <p>
                         I’ve spent so much time reflecting on my mistakes and the pain I’ve caused you. I realize now how much your love means to me, and I’m truly sorry for not showing you the care and respect you deserve.
                     </p>
@@ -42,6 +52,38 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        let currentSlide = 0;
+
+        function openCard() {
+            const card = document.querySelector('.card');
+            card.classList.add('open');
+        }
+
+        function sendLove() {
+            alert('Love sent with all my heart! ❤️');
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            const totalSlides = slides.length;
+            currentSlide = (index + totalSlides) % totalSlides; // Ensure looping
+            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Automatically transition slides every 3 seconds
+        setInterval(() => {
+            nextSlide();
+        }, 3000);
+    </script>
 </body>
 </html>
