@@ -7,21 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Image Carousel Cover -->
-    <div class="carousel-cover">
-        <div class="carousel-images">
-            <img src="images/image1.jpeg" alt="Memory 1">
-            <img src="images/image2.jpeg" alt="Memory 2">
-            <img src="images/image3.jpeg" alt="Memory 3">
-        </div>
-        <button class="prev" onclick="prevSlide()">❮</button>
-        <button class="next" onclick="nextSlide()">❯</button>
-        <button class="open-card" onclick="openCard()">💌 Click to Open 💌</button>
+    <!-- Floating Hearts -->
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
     </div>
 
-    <!-- Hidden Card (Appears After Click) -->
-    <div class="card-container hidden">
-        <div class="message-card">
+    <!-- Flip-Open Card -->
+    <div class="book-container">
+        <!-- Left Rectangle (Images Carousel) -->
+        <div class="left-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="images/image1.jpeg" alt="Memory 1">
+                    <img src="images/image2.jpeg" alt="Memory 2">
+                    <img src="images/image3.jpeg" alt="Memory 3">
+                </div>
+                <button class="prev" onclick="prevSlide()">❮</button>
+                <button class="next" onclick="nextSlide()">❯</button>
+            </div>
+        </div>
+
+        <!-- Right Rectangle (Message Card) -->
+        <div class="right-card">
             <div class="message">
                 <p>Dear Helen,</p>
                 <p>
@@ -56,11 +67,6 @@
             const totalSlides = slides.length;
             currentSlide = (currentSlide + 1) % totalSlides;
             document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        function openCard() {
-            document.querySelector('.carousel-cover').classList.add('hidden');
-            document.querySelector('.card-container').classList.remove('hidden');
         }
 
         function sendLove() {
