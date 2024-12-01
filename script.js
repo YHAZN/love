@@ -5,5 +5,5 @@ function openCard() {
 }
 
 function sendLove() {
-    alert('Love sent! ❤️');
+    alert('Love sent with all my heart! ❤️');
 }

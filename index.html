@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Sorry</title>
+    <title>Love Card</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="card" onclick="openCard()">
             <div class="front">
-                <h1>❤️ Click Me ❤️</h1>
+                <h1 class="title">💕 To My Love 💕</h1>
+                <p class="subtitle">Click to open</p>
             </div>
             <div class="back">
-                <p>I'm deeply sorry. I know I made mistakes, but I promise to be a better boyfriend and give you the love and respect you deserve. ❤️</p>
-                <button onclick="sendLove()">Send Love</button>
+                <div class="message">
+                    <p>Dear [Her Name],</p>
+                    <p>I know I’ve hurt you, and I’m deeply sorry for my mistakes. I love you and want to be a better boyfriend. You mean the world to me. 💖</p>
+                    <p>Can we start again? ❤️</p>
+                </div>
+                <button onclick="sendLove()">💌 Send Love 💌</button>
             </div>
         </div>
     </div>
